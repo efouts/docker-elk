@@ -22,10 +22,14 @@ RUN	wget -q https://download.elastic.co/kibana/kibana/$KIBANA_PKG_NAME.tar.gz &&
 
 ENV	LOGSTASH_PKG_NAME logstash-1.5.0
 
-RUN	wget -q https://download.elastic.co/logstash/logstash/$LOGSTASH_PKG_NAME.tar.gz &&\
+RUN	wget -q https://download.elastic.co/logstash/logstash/$LOGSTASH_PKG_NAME.tar.gz && \
 	tar -xzf $LOGSTASH_PKG_NAME.tar.gz && \
 	rm -f $LOGSTASH_PKG_NAME.tar.gz && \
 	mv $LOGSTASH_PKG_NAME /logstash
+
+RUN     wget -q http://geolite.maxmind.com/download/geoip/database/GeoLiteCity.dat.gz && \
+	gunzip GeoLiteCity.dat.gz && \
+        mv GeoLiteCity.dat /logstash/GeoLiteCity.dat
 
 ADD	supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
