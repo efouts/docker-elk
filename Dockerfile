@@ -13,6 +13,8 @@ RUN	wget -q https://download.elastic.co/elasticsearch/elasticsearch/$ES_PKG_NAME
 	rm -f $ES_PKG_NAME.tar.gz && \
 	mv $ES_PKG_NAME /elasticsearch
 
+ADD	elasticsearch.yml /elasticsearch/config/elasticsearch.yml
+
 ENV	KIBANA_PKG_NAME kibana-4.0.2-linux-x64
 
 RUN	wget -q https://download.elastic.co/kibana/kibana/$KIBANA_PKG_NAME.tar.gz && \

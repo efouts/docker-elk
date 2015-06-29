@@ -3,4 +3,6 @@ docker run -d \
 	-p 127.0.0.1:9200:9200 \
 	-p 127.0.0.1:9300:9300 \
 	-p 192.168.4.1:3516:3516 \
-	-v /logstash:/logstash/conf.d elk
+	-v /logstash:/logstash/conf.d \
+	-v /data:/data \
+	elk
