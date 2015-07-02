@@ -33,13 +33,22 @@ RUN     wget -q http://geolite.maxmind.com/download/geoip/database/GeoLiteCity.d
 	gunzip GeoLiteCity.dat.gz && \
         mv GeoLiteCity.dat /logstash/GeoLiteCity.dat
 
+ENV	OAUTH2_PROXY_PKG_NAME oauth2_proxy-2.0.linux-amd64.go1.4.2
+
+RUN	wget -q https://github.com/bitly/oauth2_proxy/releases/download/v2.0/$OAUTH2_PROXY_PKG_NAME.tar.gz && \
+	tar -xzf $OAUTH2_PROXY_PKG_NAME.tar.gz && \
+	rm -f $OAUTH2_PROXY_PKG_NAME.tar.gz && \
+	mv $OAUTH2_PROXY_PKG_NAME /oauth2_proxy
+
+ADD	oauth2_proxy.cfg /oauth2_proxy/oauth2_proxy.cfg
+
 ADD	supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 VOLUME	/data
 VOLUME	/logstash/conf.d
 VOLUME	/var/log/supervisor
 
-EXPOSE  5601
+EXPOSE  8000
 EXPOSE 	9200
 EXPOSE 	9300 
 
