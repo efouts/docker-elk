@@ -1,3 +1,4 @@
+```
 docker run -d \
 	-p 127.0.0.1:4180:4180 \
 	-p 127.0.0.1:9200:9200 \
@@ -11,3 +12,4 @@ docker run -d \
 	-e "OAUTH2_PROXY_GITHUB_ORG=MY_GITHUB_ORG" \
 	-e "OAUTH2_PROXY_GITHUB_TEAM=MY_TEAM" \
 	elk
+```
