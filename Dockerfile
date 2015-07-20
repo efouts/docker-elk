@@ -31,7 +31,8 @@ RUN	wget -q https://download.elastic.co/logstash/logstash/$LOGSTASH_PKG_NAME.tar
 
 RUN     wget -q http://geolite.maxmind.com/download/geoip/database/GeoLiteCity.dat.gz && \
 	gunzip GeoLiteCity.dat.gz && \
-        mv GeoLiteCity.dat /logstash/GeoLiteCity.dat
+	mkdir /geolocation && \
+	mv GeoLiteCity.dat /geolocation/GeoLiteCity.dat
 
 ENV	OAUTH2_PROXY_PKG_NAME oauth2_proxy-2.0.linux-amd64.go1.4.2
 
