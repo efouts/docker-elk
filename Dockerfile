@@ -48,8 +48,9 @@ VOLUME	/data
 VOLUME	/logstash/conf.d
 VOLUME	/var/log/supervisor
 
-EXPOSE  8000
-EXPOSE 	9200
-EXPOSE 	9300 
+EXPOSE  3516
+EXPOSE  4180
+EXPOSE  9200
+EXPOSE  9300 
 
 CMD     ["/usr/bin/supervisord", "-n", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
